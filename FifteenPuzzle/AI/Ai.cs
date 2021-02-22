@@ -175,6 +175,7 @@ namespace FifteenPuzzle.AI
                     }
                 }
             }
+            return false;
         }
 
 
