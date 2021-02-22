@@ -91,5 +91,16 @@ namespace FifteenPuzzle.AI
 
             return transpos % 2 == 1;
         }
+
+        // Проверяет, является ли доска startBoard уже собранной
+        public static bool IsAlreadySolved(int[,] startBoard)
+        {
+            Board.Create(startBoard);
+            goalX = new int[Board.BlocksCount];
+            goalY = new int[Board.BlocksCount];
+            InitGoalArrays();
+
+            return GetEstimate() == 0;
+        }
     }
 }
