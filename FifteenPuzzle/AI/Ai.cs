@@ -155,6 +155,11 @@ namespace FifteenPuzzle.AI
             if (h == 0) return true;
 
         }
+        // Оценочная функция "Манхеттеновское расстояние"
+        private static int GetEstimate()
+        {
+            var manhattan = 0;
+        }
 
 
         }
