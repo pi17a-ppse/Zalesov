@@ -153,7 +153,12 @@ namespace FifteenPuzzle.AI
 
             var h = GetEstimate();
             if (h == 0) return true;
-
+            var f = g + h;
+            if (f > deepness)
+            {
+                if (minPrevIteration > f) minPrevIteration = f;
+                return false;
+            }
         }
 
 
