@@ -102,5 +102,18 @@ namespace FifteenPuzzle.AI
 
             return GetEstimate() == 0;
         }
+
+        // Алгоритм поиска IDA*
+        private static bool IdaStar()
+        {
+            const int infinity = int.MaxValue;
+            const int maxDeepness = 50;
+
+            var result = false;
+            deepness = GetEstimate();
+
+        }
+
+
+        }
     }
-}
