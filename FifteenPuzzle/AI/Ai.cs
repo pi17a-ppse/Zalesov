@@ -132,7 +132,7 @@ namespace FifteenPuzzle.AI
                 deepness = minPrevIteration;
                 if (result) break;
             }
-
+            return result;
         }
 
 
