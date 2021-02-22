@@ -135,6 +135,16 @@ namespace FifteenPuzzle.AI
             return result;
         }
 
+        /// <summary>
+        ///     Рекурсивный поиск в глубину
+        /// </summary>
+        /// <param name="g">Уже пройденный путь</param>
+        /// <param name="previousMove">Предыдущий ход</param>
+        /// <param name="currentCell">Текущая клетка</param>
+        /// <returns>True, если удалось найти решение, иначе false</returns>
+        
 
-        }
+
+
     }
+}
