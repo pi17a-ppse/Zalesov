@@ -170,6 +170,7 @@ namespace FifteenPuzzle.AI
                     }
                 }
             }
+            return manhattan;
         }
 
 
