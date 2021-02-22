@@ -159,6 +159,22 @@ namespace FifteenPuzzle.AI
                 if (minPrevIteration > f) minPrevIteration = f;
                 return false;
             }
+            for (var i = 0; i < 4; i++)
+            {
+                var newCell = new Point(currentCell.X + dx[i], currentCell.Y + dy[i]);
+
+                if (oppositeMove[i] != previousMove && Utils.CheckBounds(newCell))
+                {
+                    Board.Swap(currentCell, newCell);
+                    var res = RecSearch(g + 1, moveDirections[i], newCell);
+                    Board.Swap(currentCell, newCell);
+                    if (res)
+                    {
+                        wayStack.Push(moveDirections[i]);
+                        return true;
+                    }
+                }
+            }
         }
 
 
