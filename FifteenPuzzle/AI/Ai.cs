@@ -43,5 +43,53 @@ namespace FifteenPuzzle.AI
             return SolvingResult.SolveFound;
         }
 
+        // Проверяет разрешимость пятнашек
+        public static bool IsSolvable(int[,] startBoard)
+        {
+            Board.Create(startBoard);
+
+            var count = 0;
+            var transpos = 0;
+
+            var ar = new int[Board.BlocksCount];
+
+            for (var i = 0; i < Board.BlocksPerLine; i++)
+            {
+                int value;
+                if (i % 2 == 0)
+                {
+                    for (var j = 0; j < Board.BlocksPerLine; j++)
+                    {
+                        value = Board[i, j];
+                        if (value > 0)
+                        {
+                            ar[count] = value;
+                            count++;
+                        }
+                    }
+                }
+                else
+                {
+                    for (var j = Board.BlocksPerLine - 1; j >= 0; j--)
+                    {
+                        value = Board[i, j];
+                        if (value > 0)
+                        {
+                            ar[count] = value;
+                            count++;
+                        }
+                    }
+                }
+            }
+            for (var i = 0; i < count - 1; i++)
+            {
+                for (var j = i + 1; j < count; j++)
+                {
+                    if (ar[i] > ar[j]) transpos++;
+                }
+            }
+
+            return transpos % 2 == 1;
+        }
     }
 }
