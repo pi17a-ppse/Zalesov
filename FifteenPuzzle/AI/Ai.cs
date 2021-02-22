@@ -180,7 +180,7 @@ namespace FifteenPuzzle.AI
         // Оценочная функция "Манхеттеновское расстояние"
         private static int GetEstimate()
         {
-            var manhattan = 0;
+            var manhattan = 1;
             for (var i = 0; i < Board.BlocksPerLine; i++)
             {
                 for (var j = 0; j < Board.BlocksPerLine; j++)
