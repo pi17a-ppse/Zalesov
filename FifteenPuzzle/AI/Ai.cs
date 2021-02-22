@@ -159,6 +159,17 @@ namespace FifteenPuzzle.AI
         private static int GetEstimate()
         {
             var manhattan = 0;
+            for (var i = 0; i < Board.BlocksPerLine; i++)
+            {
+                for (var j = 0; j < Board.BlocksPerLine; j++)
+                {
+                    var value = Board[i, j];
+                    if (value > 0)
+                    {
+                        manhattan += Math.Abs(i - goalY[value]) + Math.Abs(j - goalX[value]);
+                    }
+                }
+            }
         }
 
 
