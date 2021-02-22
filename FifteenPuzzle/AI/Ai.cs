@@ -142,9 +142,20 @@ namespace FifteenPuzzle.AI
         /// <param name="previousMove">Предыдущий ход</param>
         /// <param name="currentCell">Текущая клетка</param>
         /// <returns>True, если удалось найти решение, иначе false</returns>
-        
+
+        private static bool RecSearch(int g, Direction previousMove, Point currentCell)
+        {
+            int[] dx = { 0, -1, 0, 1 };
+            int[] dy = { 1, 0, -1, 0 };
+            var moveDirections = new[] { Direction.Down, Direction.Left, Direction.Up, Direction.Right };
+
+            var oppositeMove = new[] { Direction.Up, Direction.Right, Direction.Down, Direction.Left };
+
+            var h = GetEstimate();
+            if (h == 0) return true;
+
+        }
 
 
-
-    }
+        }
 }
