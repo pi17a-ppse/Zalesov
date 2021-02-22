@@ -111,6 +111,27 @@ namespace FifteenPuzzle.AI
 
             var result = false;
             deepness = GetEstimate();
+            // ReSharper disable once LoopVariableIsNeverChangedInsideLoop
+            while (deepness <= maxDeepness)
+            {
+                minPrevIteration = infinity;
+                var x0 = 0;
+                var y0 = 0;
+                for (var i = 0; i < Board.BlocksPerLine; i++)
+                {
+                    for (var j = 0; j < Board.BlocksPerLine; j++)
+                    {
+                        if (Board[i, j] == 0)
+                        {
+                            x0 = j;
+                            y0 = i;
+                        }
+                    }
+                }
+                result = RecSearch(0, Direction.Nowhere, new Point(x0, y0));
+                deepness = minPrevIteration;
+                if (result) break;
+            }
 
         }
 
