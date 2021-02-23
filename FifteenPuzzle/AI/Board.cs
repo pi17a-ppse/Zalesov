@@ -2,9 +2,13 @@
 
 namespace FifteenPuzzle.AI
 {
-    /// <summary>
-    /// Содержит методы для работы с доской
-    /// </summary>
+    /**
+     * Содержит методы для работы с доской 
+     * @author      Zalesov Ilya 
+     * @version     1.0.1 
+     * @copyright GNU Public License 
+     * @todo           
+     */
     class Board
     {
         private int[,] board;
@@ -19,7 +23,7 @@ namespace FifteenPuzzle.AI
         public static Board Instance => instance ?? (instance = new Board());
 
         /// <summary>
-        /// Производит инициализацию доски
+        ///  Производит инициализацию доски
         /// </summary>
         /// <param name="startBoard">Начальное расположение пятнашек</param>
         public void Create(int[,] startBoard)
@@ -30,7 +34,7 @@ namespace FifteenPuzzle.AI
         }
 
         /// <summary>
-        /// Меняет значения в ячейках p1 и p2 местами
+        ///  Меняет значения в ячейках p1 и p2 местами
         /// </summary>
         public void Swap(Point p1, Point p2)
         {

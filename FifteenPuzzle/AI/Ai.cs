@@ -5,9 +5,14 @@ using FifteenPuzzle.Helpers;
 
 namespace FifteenPuzzle.AI
 {
-    /// <summary>
-    ///     Содержит методы для поиска и построения решения пятнашек
-    /// </summary>
+
+    /**
+     * Содержит методы для поиска и построения решения пятнашек  
+     * @author      Zalesov Ilya 
+     * @version     1.0.1 
+     * @copyright GNU Public License 
+     * @todo           
+     */
     internal static class Ai
     {
         private static readonly Board Board = Board.Instance;
@@ -16,7 +21,7 @@ namespace FifteenPuzzle.AI
         private static int[] goalX, goalY;
 
         /// <summary>
-        ///     Пытается построить последовательность шагов к цели
+        ///    Пытается построить последовательность шагов к цели
         /// </summary>
         /// <param name="startBoard">Начальное состояние доски</param>
         /// <param name="result">Содержит последовательность шагов к цели в случае успеха. Иначе - null</param>
@@ -43,7 +48,7 @@ namespace FifteenPuzzle.AI
             return SolvingResult.SolveFound;
         }
 
-        // Проверяет разрешимость пятнашек
+        //  Проверяет разрешимость пятнашек
         public static bool IsSolvable(int[,] startBoard)
         {
             Board.Create(startBoard);
@@ -92,7 +97,7 @@ namespace FifteenPuzzle.AI
             return transpos % 2 == 1;
         }
 
-        // Проверяет, является ли доска startBoard уже собранной
+        //  Проверяет, является ли доска startBoard уже собранной
         public static bool IsAlreadySolved(int[,] startBoard)
         {
             Board.Create(startBoard);
@@ -103,7 +108,7 @@ namespace FifteenPuzzle.AI
             return GetEstimate() == 0;
         }
 
-        // Алгоритм поиска IDA*
+        //  Алгоритм поиска IDA*
         private static bool IdaStar()
         {
             const int infinity = int.MaxValue;
@@ -136,7 +141,7 @@ namespace FifteenPuzzle.AI
         }
 
         /// <summary>
-        ///     Рекурсивный поиск в глубину
+        ///    Рекурсивный поиск в глубину
         /// </summary>
         /// <param name="g">Уже пройденный путь</param>
         /// <param name="previousMove">Предыдущий ход</param>
@@ -177,7 +182,7 @@ namespace FifteenPuzzle.AI
             }
             return false;
         }
-        // Оценочная функция "Манхеттеновское расстояние"
+        //  Оценочная функция "Манхеттеновское расстояние"
         private static int GetEstimate()
         {
             var manhattan = 0;
@@ -195,6 +200,17 @@ namespace FifteenPuzzle.AI
             return manhattan;
         }
 
-
+        //  Производит инициализацию массивов целевых состояний
+        private static void InitGoalArrays()
+        {
+            for (var i = 0; i < Board.BlocksCount - 1; i++)
+            {
+                goalX[i + 1] = i % Board.BlocksPerLine;
+                goalY[i + 1] = i / Board.BlocksPerLine;
+            }
+            goalX[0] = Board.BlocksPerLine;
+            goalY[0] = Board.BlocksPerLine;
         }
+
+    }
 }
